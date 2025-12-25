@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nexthrix SMP - Store</title>
+<link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<style>
+/* Store pricing table */
+.store-table{ width:100%; max-width:900px; margin:40px auto; border-collapse:collapse; text-align:center; }
+.store-table th, .store-table td{ padding:16px; border-radius:12px; margin:4px; background:rgba(255,255,255,.05); backdrop-filter:blur(12px); color:#fff; font-weight:500; }
+.store-table th{ background:var(--accent); color:black; text-shadow:none; }
+.store-table td button{ padding:10px 20px; border:none; border-radius:8px; cursor:pointer; font-weight:600; background:var(--accent); color:black; box-shadow:0 0 15px var(--accent); transition:.3s; }
+.store-table td button:hover{ box-shadow:0 0 35px var(--accent); transform:scale(1.05); }
+</style>
+</head>
+<body>
+<nav aria-label="Primary navigation">
+  <div class="logo">NEXTHRIX</div>
+  <div class="links">
+    <a href="index.html">Home</a>
+    <a href="servers.html">Servers</a>
+    <a href="staff.html">Staff</a>
+    <a href="store.html">Store</a>
+    <a href="vote.html">Vote</a>
+    <a href="rules.html">Rules</a>
+    <a class="cta" href="contact.html">Contact</a>
+  </div>
+  <div class="theme-switcher">
+    <span onclick="setAccent('#34ff8a')" style="background:#34ff8a"></span>
+    <span onclick="setAccent('#00c2ff')" style="background:#00c2ff"></span>
+    <span onclick="setAccent('#ff4d6d')" style="background:#ff4d6d"></span>
+    <span onclick="setAccent('#c77dff')" style="background:#c77dff"></span>
+    <input type="color" onchange="setAccent(this.value)" />
+    <span onclick="toggleMode()">🌙</span>
+  </div>
+  <div class="menu" onclick="toggleMenu()">☰</div>
+</nav>
+
+<div id="mobileMenu" class="mobile-menu">
+  <a href="index.html">Home</a>
+  <a href="servers.html">Servers</a>
+  <a href="staff.html">Staff</a>
+  <a href="store.html">Store</a>
+  <a href="vote.html">Vote</a>
+  <a href="rules.html">Rules</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<section class="hero">
+  <div class="hero-content" style="text-align:left; max-width:900px; margin:50px auto;">
+    <h1>Store</h1>
+    <p style="margin-top:10px; font-size:1.1rem; line-height:1.6;">
+      Purchase exclusive kits to enhance your Nexthrix SMP experience. Prices range from 100₹ to 400₹.
+    </p>
+
+    <table class="store-table">
+      <thead>
+        <tr>
+          <th>Kit Name</th>
+          <th>Price (₹)</th>
+          <th>Purchase</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Starter Kit</td>
+          <td>100</td>
+          <td><button onclick="alert('Starter Kit added!')">Buy</button></td>
+        </tr>
+        <tr>
+          <td>Explorer Kit</td>
+          <td>150</td>
+          <td><button onclick="alert('Explorer Kit added!')">Buy</button></td>
+        </tr>
+        <tr>
+          <td>Builder Kit</td>
+          <td>200</td>
+          <td><button onclick="alert('Builder Kit added!')">Buy</button></td>
+        </tr>
+        <tr>
+          <td>Warrior Kit</td>
+          <td>250</td>
+          <td><button onclick="alert('Warrior Kit added!')">Buy</button></td>
+        </tr>
+        <tr>
+          <td>Master Kit</td>
+          <td>300</td>
+          <td><button onclick="alert('Master Kit added!')">Buy</button></td>
+        </tr>
+        <tr>
+          <td>Legend Kit</td>
+          <td>400</td>
+          <td><button onclick="alert('Legend Kit added!')">Buy</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>

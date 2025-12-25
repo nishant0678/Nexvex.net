@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nexthrix SMP - Servers</title>
+<link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<style>
+.server-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 0 20px;
+}
+.server-card {
+  background: rgba(255,255,255,.05);
+  backdrop-filter: blur(12px);
+  padding: 20px;
+  border-radius: 14px;
+  text-align: center;
+  transition: transform .3s, box-shadow .3s;
+  color: white;
+}
+.server-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px var(--accent);
+}
+.server-card h3 {
+  margin: 10px 0 5px;
+  font-size: 1.3rem;
+  color: var(--accent);
+}
+.server-card p {
+  margin: 5px 0;
+  opacity: 0.9;
+}
+.status-online { color: #34ff8a; font-weight: 600; }
+.status-offline { color: #ff4d6d; font-weight: 600; }
+</style>
+</head>
+<body>
+<nav aria-label="Primary navigation">
+  <div class="logo">NEXTHRIX</div>
+  <div class="links">
+    <a href="index.html">Home</a>
+    <a href="servers.html">Servers</a>
+    <a href="staff.html">Staff</a>
+    <a href="store.html">Store</a>
+    <a href="vote.html">Vote</a>
+    <a href="rules.html">Rules</a>
+    <a class="cta" href="contact.html">Contact</a>
+  </div>
+  <div class="theme-switcher">
+    <span onclick="setAccent('#34ff8a')" style="background:#34ff8a"></span>
+    <span onclick="setAccent('#00c2ff')" style="background:#00c2ff"></span>
+    <span onclick="setAccent('#ff4d6d')" style="background:#ff4d6d"></span>
+    <span onclick="setAccent('#c77dff')" style="background:#c77dff"></span>
+    <input type="color" onchange="setAccent(this.value)" />
+    <span onclick="toggleMode()">🌙</span>
+  </div>
+  <div class="menu" onclick="toggleMenu()">☰</div>
+</nav>
+
+<div id="mobileMenu" class="mobile-menu">
+  <a href="index.html">Home</a>
+  <a href="servers.html">Servers</a>
+  <a href="staff.html">Staff</a>
+  <a href="store.html">Store</a>
+  <a href="vote.html">Vote</a>
+  <a href="rules.html">Rules</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<section class="hero">
+  <div class="hero-content" style="text-align:center; max-width:1200px; margin:50px auto;">
+    <h1>Our Servers</h1>
+    <p>Join our servers and experience Nexthrix SMP at its best!</p>
+
+    <div class="server-grid">
+      <div class="server-card">
+        <h3>SMP Classic</h3>
+        <p>Type: Survival</p>
+        <p>Status: <span class="status-online">Online</span></p>
+        <p>Players: 1200+</p>
+      </div>
+      <div class="server-card">
+        <h3>SkyBlock Pro</h3>
+        <p>Type: SkyBlock</p>
+        <p>Status: <span class="status-online">Online</span></p>
+        <p>Players: 850+</p>
+      </div>
+      <div class="server-card">
+        <h3>Creative Hub</h3>
+        <p>Type: Creative</p>
+        <p>Status: <span class="status-offline">Offline</span></p>
+        <p>Players: 0</p>
+      </div>
+      <div class="server-card">
+        <h3>Faction Wars</h3>
+        <p>Type: Factions</p>
+        <p>Status: <span class="status-online">Online</span></p>
+        <p>Players: 430+</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>

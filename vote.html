@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nexthrix SMP - Vote</title>
+<link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<style>
+.vote-container {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+.vote-card {
+  background: rgba(255,255,255,.05);
+  backdrop-filter: blur(12px);
+  padding: 20px;
+  border-radius: 14px;
+  text-align: center;
+  transition: transform .3s, box-shadow .3s;
+  color: white;
+}
+.vote-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px var(--accent);
+}
+.vote-card h3 {
+  margin: 10px 0;
+  font-size: 1.3rem;
+  color: var(--accent);
+}
+.vote-card p {
+  margin: 5px 0;
+  opacity: 0.9;
+}
+.reward {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.reward span {
+  background: rgba(255,255,255,.1);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.vote-button {
+  margin-top: 12px;
+  padding: 10px 20px;
+  background: var(--accent);
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .3s, box-shadow .3s;
+}
+.vote-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px var(--accent);
+}
+.vote-stats {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.vote-stats h2 {
+  font-size: 1.8rem;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.vote-stats p {
+  opacity: 0.9;
+}
+
+/* Username claim section */
+.claim-section {
+  max-width: 500px;
+  margin: 50px auto;
+  background: rgba(255,255,255,.05);
+  backdrop-filter: blur(12px);
+  padding: 20px;
+  border-radius: 14px;
+  text-align: center;
+}
+.claim-section input {
+  width: 80%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 12px;
+  font-size: 1rem;
+}
+.claim-section button {
+  padding: 10px 20px;
+  background: var(--accent);
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform .3s, box-shadow .3s;
+}
+.claim-section button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px var(--accent);
+}
+</style>
+</head>
+<body>
+<nav aria-label="Primary navigation">
+  <div class="logo">NEXTHRIX</div>
+  <div class="links">
+    <a href="index.html">Home</a>
+    <a href="servers.html">Servers</a>
+    <a href="staff.html">Staff</a>
+    <a href="store.html">Store</a>
+    <a href="vote.html">Vote</a>
+    <a href="rules.html">Rules</a>
+    <a class="cta" href="contact.html">Contact</a>
+  </div>
+  <div class="theme-switcher">
+    <span onclick="setAccent('#34ff8a')" style="background:#34ff8a"></span>
+    <span onclick="setAccent('#00c2ff')" style="background:#00c2ff"></span>
+    <span onclick="setAccent('#ff4d6d')" style="background:#ff4d6d"></span>
+    <span onclick="setAccent('#c77dff')" style="background:#c77dff"></span>
+    <input type="color" onchange="setAccent(this.value)" />
+    <span onclick="toggleMode()">🌙</span>
+  </div>
+  <div class="menu" onclick="toggleMenu()">☰</div>
+</nav>
+
+<div id="mobileMenu" class="mobile-menu">
+  <a href="index.html">Home</a>
+  <a href="servers.html">Servers</a>
+  <a href="staff.html">Staff</a>
+  <a href="store.html">Store</a>
+  <a href="vote.html">Vote</a>
+  <a href="rules.html">Rules</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<section class="hero">
+  <div class="hero-content" style="text-align:center; max-width:1200px; margin:50px auto;">
+    <h1>Vote for Nexthrix SMP</h1>
+    <p>Vote daily and earn rewards! Track your streaks and claim your prizes using your Minecraft username.</p>
+
+    <div class="vote-stats">
+      <h2 id="daily-streak">Daily Streak: 0</h2>
+      <p>Keep voting every day to increase your streak!</p>
+    </div>
+
+    <div class="vote-container">
+      <!-- Mayor Kit -->
+      <div class="vote-card">
+        <h3>Mayor Kit</h3>
+        <p>Vote for your favorite Mayor and earn exclusive rewards!</p>
+        <div class="reward">
+          <span>💰 500 Coins</span>
+          <span>💎 50 Diamonds</span>
+          <span>⚡ 100 XP</span>
+        </div>
+        <button class="vote-button" onclick="vote('Mayor Kit')">Vote Now</button>
+      </div>
+
+      <!-- Survival Kit -->
+      <div class="vote-card">
+        <h3>Survival Kit</h3>
+        <p>Get useful items to survive and thrive!</p>
+        <div class="reward">
+          <span>💰 200 Coins</span>
+          <span>⛏️ Iron Tools</span>
+          <span>🍗 Food</span>
+        </div>
+        <button class="vote-button" onclick="vote('Survival Kit')">Vote Now</button>
+      </div>
+
+      <!-- PvP Kit -->
+      <div class="vote-card">
+        <h3>PvP Kit</h3>
+        <p>Gear up for combat with special items!</p>
+        <div class="reward">
+          <span>💰 300 Coins</span>
+          <span>⚔️ Diamond Sword</span>
+          <span>🛡️ Shield</span>
+        </div>
+        <button class="vote-button" onclick="vote('PvP Kit')">Vote Now</button>
+      </div>
+
+      <!-- Builder Kit -->
+      <div class="vote-card">
+        <h3>Builder Kit</h3>
+        <p>Receive resources to make your builds amazing!</p>
+        <div class="reward">
+          <span>💰 250 Coins</span>
+          <span>🪵 200 Wood</span>
+          <span>🧱 100 Stone</span>
+        </div>
+        <button class="vote-button" onclick="vote('Builder Kit')">Vote Now</button>
+      </div>
+    </div>
+
+    <!-- Claim Section -->
+    <div class="claim-section">
+      <h3>Claim Your Reward</h3>
+      <p>Enter your Minecraft username to claim rewards for your votes.</p>
+      <input type="text" id="minecraftUsername" placeholder="Enter your IGN..." />
+      <br/>
+      <button onclick="claimReward()">Claim Reward</button>
+    </div>
+  </div>
+</section>
+
+<script>
+function toggleMenu(){ const m=document.getElementById("mobileMenu"); m.style.display=m.style.display==="flex"?"none":"flex"; }
+function setAccent(color){ document.documentElement.style.setProperty('--accent',color); localStorage.setItem("accent",color); }
+function toggleMode(){ document.body.classList.toggle("light"); localStorage.setItem("mode",document.body.classList.contains("light")); }
+if(localStorage.accent){ document.documentElement.style.setProperty('--accent',localStorage.accent); }
+if(localStorage.mode==="true"){ document.body.classList.add("light"); }
+
+// Daily vote streak
+let streak = localStorage.getItem('voteStreak') ? parseInt(localStorage.getItem('voteStreak')) : 0;
+let lastVote = localStorage.getItem('lastVote') ? new Date(localStorage.getItem('lastVote')) : null;
+updateStreak();
+
+function vote(kit){
+  const now = new Date();
+  if(lastVote){
+    const diffTime = now - lastVote;
+    const diffDays = diffTime / (1000*60*60*24);
+    if(diffDays >= 1 && diffDays < 2){
+      streak++;
+    } else if(diffDays >= 2){
+      streak = 1;
+    } // same day vote, no change
+  } else {
+    streak = 1;
+  }
+  lastVote = now;
+  localStorage.setItem('voteStreak', streak);
+  localStorage.setItem('lastVote', now);
+  updateStreak();
+  alert(`You voted for ${kit}! Rewards collected. Current streak: ${streak}`);
+}
+
+function updateStreak(){
+  document.getElementById('daily-streak').innerText = `Daily Streak: ${streak}`;
+}
+
+// Claim reward
+function claimReward(){
+  const username = document.getElementById('minecraftUsername').value.trim();
+  if(username === ''){
+    alert('Please enter your Minecraft username.');
+    return;
+  }
+  localStorage.setItem('minecraftUsername', username);
+  alert(`Rewards claimed for ${username}! Check your in-game inventory.`);
+}
+</script>
+</body>
+</html>

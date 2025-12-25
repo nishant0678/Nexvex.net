@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nexthrix SMP - Rules</title>
+<link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+<style>
+.rules-container {
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 0 20px;
+}
+.rule-card {
+  background: rgba(255,255,255,.05);
+  backdrop-filter: blur(12px);
+  padding: 20px;
+  border-radius: 14px;
+  margin-bottom: 20px;
+  transition: transform .3s, box-shadow .3s;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.rule-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 25px var(--accent);
+}
+.rule-icon {
+  font-size: 2rem;
+}
+.rule-content h3 {
+  margin: 0 0 5px 0;
+  font-size: 1.2rem;
+  color: var(--accent);
+}
+.rule-content p {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 1rem;
+}
+
+/* Colors for rule types */
+.rule-general { border-left: 6px solid #34ff8a; }
+.rule-chat { border-left: 6px solid #00c2ff; }
+.rule-behavior { border-left: 6px solid #ff4d6d; }
+.rule-building { border-left: 6px solid #c77dff; }
+.rule-pvp { border-left: 6px solid #ffb347; }
+</style>
+</head>
+<body>
+<nav aria-label="Primary navigation">
+  <div class="logo">NEXTHRIX</div>
+  <div class="links">
+    <a href="index.html">Home</a>
+    <a href="servers.html">Servers</a>
+    <a href="staff.html">Staff</a>
+    <a href="store.html">Store</a>
+    <a href="vote.html">Vote</a>
+    <a href="rules.html">Rules</a>
+    <a class="cta" href="contact.html">Contact</a>
+  </div>
+  <div class="theme-switcher">
+    <span onclick="setAccent('#34ff8a')" style="background:#34ff8a"></span>
+    <span onclick="setAccent('#00c2ff')" style="background:#00c2ff"></span>
+    <span onclick="setAccent('#ff4d6d')" style="background:#ff4d6d"></span>
+    <span onclick="setAccent('#c77dff')" style="background:#c77dff"></span>
+    <input type="color" onchange="setAccent(this.value)" />
+    <span onclick="toggleMode()">🌙</span>
+  </div>
+  <div class="menu" onclick="toggleMenu()">☰</div>
+</nav>
+
+<div id="mobileMenu" class="mobile-menu">
+  <a href="index.html">Home</a>
+  <a href="servers.html">Servers</a>
+  <a href="staff.html">Staff</a>
+  <a href="store.html">Store</a>
+  <a href="vote.html">Vote</a>
+  <a href="rules.html">Rules</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<section class="hero">
+  <div class="hero-content" style="text-align:center; max-width:1000px; margin:50px auto;">
+    <h1>Server Rules</h1>
+    <p>Please follow these rules to ensure a fun and fair experience for everyone!</p>
+
+    <div class="rules-container">
+      <div class="rule-card rule-general">
+        <div class="rule-icon">📜</div>
+        <div class="rule-content">
+          <h3>General Rules</h3>
+          <p>Respect all players, no cheating or exploiting, and have fun!</p>
+        </div>
+      </div>
+
+      <div class="rule-card rule-chat">
+        <div class="rule-icon">💬</div>
+        <div class="rule-content">
+          <h3>Chat Rules</h3>
+          <p>No spamming, offensive language, or advertising other servers.</p>
+        </div>
+      </div>
+
+      <div class="rule-card rule-behavior">
+        <div class="rule-icon">⚔️</div>
+        <div class="rule-content">
+          <h3>Behavior Rules</h3>
+          <p>No harassment, bullying, or inappropriate behavior towards others.</p>
+        </div>
+      </div>
+
+      <div class="rule-card rule-building">
+        <div class="rule-icon">🏰</div>
+        <div class="rule-content">
+          <h3>Building Rules</h3>
+          <p>Do not grief or steal from other players. Build respectfully.</p>
+        </div>
+      </div>
+
+      <div class="rule-card rule-pvp">
+        <div class="rule-icon">🛡️</div>
+        <div class="rule-content">
+          <h3>PvP Rules</h3>
+          <p>PvP is allowed only in designated areas. No unfair combat tactics.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>

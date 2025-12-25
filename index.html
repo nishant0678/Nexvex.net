@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nexthrix SMP - Home</title>
+<link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --accent:#34ff8a;
+  --bg:#06080f;
+  --glass:rgba(15,15,25,.45);
+  --text:#ffffff;
+}
+.light{ --bg:#f4f6ff; --glass:rgba(255,255,255,.55); --text:#0b0f1a; }
+*{box-sizing:border-box; margin:0; padding:0;}
+body{ font-family:Poppins,sans-serif; background:var(--bg); color:var(--text); overflow-x:hidden; transition:.4s; }
+
+/* ================= NAVBAR ================= */
+nav{ position:fixed; top:0; width:100%; z-index:100; display:flex; justify-content:space-between; align-items:center; padding:16px 40px; background:var(--glass); backdrop-filter:blur(25px); border-bottom:1px solid rgba(255,255,255,.08); box-shadow:0 12px 30px rgba(0,0,0,.4); transition:.4s; }
+.logo{ font-weight:700; font-size:22px; color:var(--accent); text-shadow:0 0 8px var(--accent);}
+.links a{ color:var(--text); text-decoration:none; margin-left:26px; font-size:14px; opacity:.9; transition:.3s;}
+.links a:hover{ opacity:1; text-shadow:0 0 6px var(--accent);}
+.links a.cta{ background:linear-gradient(45deg,var(--accent),#00c2ff); color:black; padding:8px 16px; border-radius:8px; box-shadow:0 0 18px var(--accent); transition:.3s;}
+.links a.cta:hover{ transform:scale(1.05); box-shadow:0 0 38px var(--accent);}
+.theme-switcher{ display:flex; gap:10px; margin-left:20px; align-items:center; }
+.theme-switcher span{ width:14px; height:14px; border-radius:50%; cursor:pointer; border:2px solid #fff; transition:.3s;}
+.theme-switcher input{ width:18px; height:18px; border:none; background:none; cursor:pointer; }
+.menu{ display:none; font-size:28px; cursor:pointer; transition:.3s;}
+.menu:hover{ transform:scale(1.2);}
+.mobile-menu{ position:fixed; top:80px; left:50%; transform:translateX(-50%); width:90%; background:var(--glass); backdrop-filter:blur(25px); border-radius:14px; display:none; flex-direction:column; z-index:99; box-shadow:0 25px 50px rgba(0,0,0,.5);}
+.mobile-menu a{ padding:14px; text-align:center; color:var(--text); text-decoration:none; border-bottom:1px solid rgba(255,255,255,.06); transition:.3s;}
+.mobile-menu a:hover{ background:rgba(255,255,255,.05); transform:scale(1.02);}
+
+/* ================= HERO ================= */
+.hero{ min-height:100vh; position:relative; display:flex; align-items:center; padding:120px 40px 40px; overflow:hidden;}
+.slide{ position:absolute; inset:0; background-size:cover; background-position:center; opacity:0; transition:opacity 1s ease-in-out; z-index:0; will-change:transform;}
+.slide.active{opacity:1;}
+.hero::before{ content:""; position:absolute; inset:0; background:linear-gradient(to right,rgba(0,0,0,.8),rgba(0,0,0,.3)); z-index:1;}
+.hero-content{ position:relative; z-index:2; max-width:620px; animation:fadeUp 1s ease forwards; text-align:center; }
+@keyframes fadeUp{ from{opacity:0; transform:translateY(40px);} to{opacity:1; transform:translateY(0);} }
+.hero h1{ font-family:'Minecraft',sans-serif; font-size:3.6rem; line-height:1.1; background:linear-gradient(90deg,#34ff8a,#00c2ff,#ff4d6d,#c77dff); background-clip:text; -webkit-background-clip:text; color:transparent; animation:glowText 2.5s infinite alternate;}
+@keyframes glowText{ 0%{filter:drop-shadow(0 0 5px var(--accent));} 100%{filter:drop-shadow(0 0 20px #00c2ff);}}
+.hero p{ opacity:.9; line-height:1.6; margin:20px 0 30px; font-size:1.1rem;}
+.hero-buttons{ display:flex; gap:16px; flex-wrap:wrap; justify-content:center;}
+.hero-buttons button{ padding:14px 28px; border:none; border-radius:8px; cursor:pointer; font-weight:600; transition:.3s;}
+.btn-primary{ background:var(--accent); color:black; box-shadow:0 0 25px var(--accent); }
+.btn-primary:hover{ box-shadow:0 0 50px var(--accent); transform:scale(1.05);}
+.btn-outline{ background:transparent; border:1px solid var(--text); color:var(--text); text-shadow:0 0 4px #fff;}
+.btn-outline:hover{ background:rgba(255,255,255,.1); transform:scale(1.05);}
+
+/* ================= STATS ================= */
+.stats{ display:flex; gap:40px; margin-top:50px; flex-wrap:wrap; justify-content:center;}
+.stat{ position:relative; padding:20px 30px; border-radius:12px; background:rgba(255,255,255,.05); backdrop-filter:blur(12px); transition:.3s; box-shadow:0 0 25px rgba(0,255,138,.3);}
+.stat:hover{ box-shadow:0 0 60px var(--accent); transform:scale(1.08);}
+.stat h2{ color:var(--accent); margin:0; font-size:28px; text-shadow:0 0 12px var(--accent); animation:statGlow 2s infinite alternate;}
+@keyframes statGlow{ 0%{text-shadow:0 0 12px var(--accent);} 100%{text-shadow:0 0 30px #00c2ff;}}
+.stat p{ margin:0; font-size:12px; opacity:.8; text-transform:uppercase; letter-spacing:1px; color:#fff;}
+
+/* PARTICLES */
+.particle{ position:absolute; width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.6); animation:float 8s linear infinite; mix-blend-mode:screen; will-change:transform;}
+@keyframes float{ from{transform:translateY(0) rotate(0deg);} to{transform:translateY(-120vh) rotate(360deg);}}
+
+/* RESPONSIVE */
+@media(max-width:768px){ nav{padding:14px 20px} .links,.theme-switcher{display:none} .menu{display:block} .hero{padding:100px 20px} .hero h1{font-size:2.3rem} }
+</style>
+</head>
+<body>
+<nav aria-label="Primary navigation">
+  <div class="logo">NEXTHRIX</div>
+  <div class="links" role="navigation" aria-label="Main menu">
+    <a href="index.html" aria-current="page">Home</a>
+    <a href="servers.html">Servers</a>
+    <a href="staff.html">Staff</a>
+    <a href="store.html">Store</a>
+    <a href="vote.html">Vote</a>
+    <a href="rules.html">Rules</a>
+    <a class="cta" href="contact.html">Contact</a>
+  </div>
+  <div class="theme-switcher">
+    <span onclick="setAccent('#34ff8a')" style="background:#34ff8a"></span>
+    <span onclick="setAccent('#00c2ff')" style="background:#00c2ff"></span>
+    <span onclick="setAccent('#ff4d6d')" style="background:#ff4d6d"></span>
+    <span onclick="setAccent('#c77dff')" style="background:#c77dff"></span>
+    <input type="color" onchange="setAccent(this.value)" />
+    <span onclick="toggleMode()">🌙</span>
+  </div>
+  <div class="menu" onclick="toggleMenu()">☰</div>
+</nav>
+
+<div id="mobileMenu" class="mobile-menu">
+  <a href="index.html" aria-current="page">Home</a>
+  <a href="servers.html">Servers</a>
+  <a href="staff.html">Staff</a>
+  <a href="store.html">Store</a>
+  <a href="vote.html">Vote</a>
+  <a href="rules.html">Rules</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1624698483060-38d65f5edc06')" aria-hidden="true"></div>
+  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1601758123927-196cc3b8c2e1')" aria-hidden="true"></div>
+  <div class="hero-content">
+    <h1 id="hero-title">THE ULTIMATE<br><span>MINECRAFT</span><br>EXPERIENCE</h1>
+    <p>Join thousands of players on Nexthrix SMP. Build, survive and dominate.</p>
+    <div class="hero-buttons">
+      <button class="btn-primary" onclick="alert('Explore Servers clicked!')">Explore Servers</button>
+      <button class="btn-outline" onclick="alert('Join Discord clicked!')">Join Discord</button>
+    </div>
+    <div class="stats">
+      <div class="stat"><h2 id="players">0</h2><p>PLAYERS</p></div>
+      <div class="stat"><h2 id="servers">0</h2><p>SERVERS</p></div>
+      <div class="stat"><h2>24/7</h2><p>UPTIME</p></div>
+    </div>
+  </div>
+</section>
+
+<script>
+// Menu toggle
+function toggleMenu(){ const m=document.getElementById("mobileMenu"); m.style.display=m.style.display==="flex"?"none":"flex"; }
+
+// Slide animation
+let slides=document.querySelectorAll(".slide"); let i=0; setInterval(()=>{ slides[i].classList.remove("active"); i=(i+1)%slides.length; slides[i].classList.add("active"); },5000);
+
+// Particle generation
+let particles=[];
+for(let i=0;i<50;i++){
+  const p=document.createElement("div");
+  p.className="particle";
+  p.style.left=Math.random()*100+"%";
+  p.style.width=2+Math.random()*6+"px";
+  p.style.height=p.style.width;
+  p.style.backgroundColor=`hsl(${Math.random()*360},100%,75%)`;
+  p.style.animationDuration=4+Math.random()*8+"s";
+  document.body.appendChild(p);
+  particles.push(p);
+}
+
+// Mouse parallax
+document.addEventListener('mousemove', e=>{
+  const x=e.clientX/window.innerWidth-0.5;
+  const y=e.clientY/window.innerHeight-0.5;
+  slides.forEach((s,index)=>{
+    s.style.transform=`translate(${x*20*(index+1)}px,${y*15*(index+1)}px)`;
+  });
+  particles.forEach(p=>{
+    const speed=parseFloat(p.style.width)*2;
+    p.style.transform=`translate(${x*speed}px,${y*speed}px)`;
+  });
+});
+
+// Animated counters
+function animate(id,target){ let n=0; const el=document.getElementById(id); const t=setInterval(()=>{ n+=Math.ceil(target/40); if(n>=target){n=target;clearInterval(t)} el.innerText=n+"+"; },30); }
+animate("players",1200); animate("servers",4);
+
+// Theme & accent
+function setAccent(color){ document.documentElement.style.setProperty('--accent',color); localStorage.setItem("accent",color); }
+function toggleMode(){ document.body.classList.toggle("light"); localStorage.setItem("mode",document.body.classList.contains("light")); }
+if(localStorage.accent){ document.documentElement.style.setProperty('--accent',localStorage.accent); }
+if(localStorage.mode==="true"){ document.body.classList.add("light"); }
+</script>
+</body>
+</html>
